@@ -1,0 +1,11 @@
+ca\cmic\checks\SQLInjectionCheckTest.class
+ca\cmic\CheckRegistrarTest.class
+ca\cmic\RulesPluginTest.class
+ca\cmic\CMiCRulesDefinitionTest.class
+ca\cmic\utils\StringUtilsTest.class
+ca\cmic\checks\SQLInjection2Test.class
+ca\cmic\utils\TestUtils.class
+ca\cmic\checks\AvoidANDSymbolTest.class
+ca\cmic\RulesPluginTest$MockedSonarRuntime.class
+ca\cmic\utils\FilesUtils$1.class
+ca\cmic\utils\FilesUtils.class

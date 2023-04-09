@@ -1,0 +1,17 @@
+{
+  "title": "Java-101: Avoid AND (&) Symbol",
+  "type": "CODE_SMELL",
+  "status": "READY",
+  "description": "Checks for the use of the '&' symbol in code.",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "20min"
+  }
+  "tags": [
+    "bad-practice",
+    "hibernate",
+    "java"
+  ],
+  "defaultSeverity": "Critical",
+  "quickfix": "unknown - check your code to remove '&' symbol"
+}

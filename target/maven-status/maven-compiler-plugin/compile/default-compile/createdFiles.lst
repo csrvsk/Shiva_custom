@@ -1,0 +1,15 @@
+ca\cmic\internal\InternalInputFile.class
+ca\cmic\rules\AvoidANDSymbolCheck.class
+ca\cmic\RulesList.class
+ca\cmic\internal\InternalMockedSonarAPI$1.class
+ca\cmic\CMiCRulesDefinition.class
+ca\cmic\internal\InternalMockedSonarAPI$NotSupportedException.class
+ca\cmic\CheckRegistrar.class
+ca\cmic\rules\SQLInjectionCheck.class
+ca\cmic\RulesPlugin.class
+ca\cmic\utils\StringUtils.class
+ca\cmic\internal\InternalMockedSonarAPI.class
+ca\cmic\utils\PrinterVisitor.class
+ca\cmic\internal\InternalTextPointer.class
+ca\cmic\internal\InternalTextRange.class
+ca\cmic\rules\SQLInjection2Check.class
