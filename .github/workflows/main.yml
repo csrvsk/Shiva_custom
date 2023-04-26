@@ -52,7 +52,7 @@ jobs:
         uses: SonarSource/sonarqube-quality-gate-action@v1.1.0
         with:
           checkName: SonarQube Quality Gate Check
-          waitForQualityGate: 'false'
+          waitForQualityGate: 'true'
 
       - name: Publish SonarQube Report
         uses: actions/upload-artifact@v2
