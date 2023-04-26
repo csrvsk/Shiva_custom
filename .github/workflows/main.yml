@@ -15,9 +15,16 @@ jobs:
   sonarqube:
     runs-on: ubuntu-latest
     steps:
-      - name: SonarQube Scan
-        uses: sonarsource/sonarqube-scan-action@master
-        env:
+    - uses: actions/checkout@v3
+      with:
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+        fetch-depth: 0
+        
+    - name: SonarQube Scan
+    - uses: sonarsource/sonarqube-scan-action@master
+      with:
+          projectBaseDir: <csrvsk/Shiva_custom>
+      env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -27,25 +34,25 @@ jobs:
             -Dsonar.java.binaries=.
             -Dsonar.java.libraries.=.
           
-      - name: List files in the workspace
-        run: |
+    - name: List files in the workspace
+      run: |
          ls -R /
 
-      - name: Publish SonarQube Report
-        uses: actions/upload-artifact@v2
-        with:
+    - name: Publish SonarQube Report
+      uses: actions/upload-artifact@v2
+      with:
           name: sonarqube-report
           path: .scannerwork/report-task.txt
       
-      - name: Publish Coverage Report
-        uses: actions/upload-artifact@v2
-        with:
+    - name: Publish Coverage Report
+      uses: actions/upload-artifact@v2
+      with:
           name: coverage-report
           path: coverage/lcov-report
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.1
-        with:
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@4.1.1
+      with:
           branch: gh-pages
           folder: ./coverage/lcov-report
           token: ${{ secrets.ACCESS_TOKEN }}
