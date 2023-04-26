@@ -20,8 +20,12 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-          SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          args: >
+            sonar.projectKey=GitHubTestProject
+            sonar.sources=.
+            sonar.java.binaries=.
+            sonar.java.libraries.=.
           
       - name: List files in the workspace
         run: |
