@@ -38,15 +38,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: Check if .scannerwork directory exists
-        run: |
-          if [ -d "${{ github.workspace }}/.scannerwork" ]; then
-          echo ".scannerwork directory exists"
-          else
-          echo "ERROR: .scannerwork directory does not exist"
-          exit 1
-          fi
 
       - name: Publish SonarQube Report
         uses: actions/upload-artifact@v2
