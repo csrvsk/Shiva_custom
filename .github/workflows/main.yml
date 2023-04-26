@@ -4,53 +4,30 @@ on:
   # Trigger analysis when pushing to your main branches, and when creating a pull request.
   push:
     branches:
+      - main
       - master
+      - develop
+      - 'releases/**'
   pull_request:
-    types: [opened, synchronize, reopened]
+      types: [opened, synchronize, reopened]
 
 jobs:
   sonarqube:
     runs-on: ubuntu-latest
     steps:
-
-        
+    - uses: actions/checkout@v3
+      with:
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+        fetch-depth: 0
     - name: SonarQube Scan
-    - uses: sonarsource/sonarqube-scan-action@master
-      with:
-          projectBaseDir: <csrvsk/Shiva_custom>
+      uses: sonarsource/sonarqube-scan-action@master
       env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          args: >
-            -Dsonar.projectKey=GitHubTestProject
-            -Dsonar.sources=.
-            -Dsonar.java.binaries=.
-            -Dsonar.java.libraries.=.
-          
-    - name: List files in the workspace
-      run: |
-         ls -R /
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        
+    - name: SonarQube Quality Gate Check
+      uses: SonarSource/sonarqube-quality-gate-action@v1.1.0
 
-    - name: Publish SonarQube Report
-      uses: actions/upload-artifact@v2
-      with:
-          name: sonarqube-report
-          path: .scannerwork/report-task.txt
-      
-    - name: Publish Coverage Report
-      uses: actions/upload-artifact@v2
-      with:
-          name: coverage-report
-          path: coverage/lcov-report
-
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@4.1.1
-      with:
-          branch: gh-pages
-          folder: ./coverage/lcov-report
-          token: ${{ secrets.ACCESS_TOKEN }}
-          cname: your-domain.com
 
 
 # name: GitHubTest
@@ -59,27 +36,52 @@ jobs:
 #   # Trigger analysis when pushing to your main branches, and when creating a pull request.
 #   push:
 #     branches:
-#       - main
 #       - master
-#       - develop
-#       - 'releases/**'
 #   pull_request:
-#       types: [opened, synchronize, reopened]
+#     types: [opened, synchronize, reopened]
 
 # jobs:
 #   sonarqube:
 #     runs-on: ubuntu-latest
 #     steps:
-#     - uses: actions/checkout@v3
-#       with:
-#         # Disabling shallow clone is recommended for improving relevancy of reporting
-#         fetch-depth: 0
-#     - name: SonarQube Scan
-#       uses: sonarsource/sonarqube-scan-action@master
-#       env:
-#         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-#         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
         
-#     - name: SonarQube Quality Gate Check
-#       uses: SonarSource/sonarqube-quality-gate-action@v1.1.0
+#     - name: SonarQube Scan
+#     - uses: sonarsource/sonarqube-scan-action@master
+#       with:
+#           projectBaseDir: <csrvsk/Shiva_custom>
+#       env:
+#           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#           args: >
+#             -Dsonar.projectKey=GitHubTestProject
+#             -Dsonar.sources=.
+#             -Dsonar.java.binaries=.
+#             -Dsonar.java.libraries.=.
+          
+#     - name: List files in the workspace
+#       run: |
+#          ls -R /
+
+#     - name: Publish SonarQube Report
+#       uses: actions/upload-artifact@v2
+#       with:
+#           name: sonarqube-report
+#           path: .scannerwork/report-task.txt
+      
+#     - name: Publish Coverage Report
+#       uses: actions/upload-artifact@v2
+#       with:
+#           name: coverage-report
+#           path: coverage/lcov-report
+
+#     - name: Deploy to GitHub Pages
+#       uses: JamesIves/github-pages-deploy-action@4.1.1
+#       with:
+#           branch: gh-pages
+#           folder: ./coverage/lcov-report
+#           token: ${{ secrets.ACCESS_TOKEN }}
+#           cname: your-domain.com
+
 
