@@ -15,23 +15,6 @@ jobs:
   sonarqube:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14.x'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Publish Coverage Report
-        uses: actions/upload-artifact@v2
-        with:
-          name: coverage-report
-          path: coverage/lcov-report
-
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
         env:
@@ -44,9 +27,16 @@ jobs:
         with:
           name: sonarqube-report
           path: .scannerwork/report-task.txt
+      
+      - name: Publish Coverage Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-report
+          path: coverage/lcov-report
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.1
+          ls -R
         with:
           branch: gh-pages
           folder: ./coverage/lcov-report
