@@ -21,6 +21,10 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: List files in the workspace
+        run: |
+         ls -R /
 
       - name: Publish SonarQube Report
         uses: actions/upload-artifact@v2
@@ -36,7 +40,6 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.1
-          ls -R
         with:
           branch: gh-pages
           folder: ./coverage/lcov-report
