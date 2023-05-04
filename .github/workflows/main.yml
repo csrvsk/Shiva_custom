@@ -34,6 +34,10 @@ jobs:
     
     - name: SonarQube Quality Gate Report
       uses: phwt/sonarqube-quality-gate-action@v1.3.2
+      with:
+           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
         
 
