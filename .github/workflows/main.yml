@@ -20,17 +20,23 @@ jobs:
         # Disabling shallow clone is recommended for improving relevancy of reporting
         fetch-depth: 0
     - name: SonarQube Scan
-      uses: sonarsource/sonarqube-scan-action@master
+      uses: sonarsource/sonarqube-scan-action@v1.2
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-
+    
     - name: Sonar for GitHub
       uses: SonarSource/sonar-github-integration@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         SONAR_LOGIN: ${{ secrets.SONAR_TOKEN }}
+                            
+    - name: Publish SonarQube report
+      uses: SonarSource/sonar-github-integration@v7
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
         
 #     - name: SonarQube Quality Gate Check
 #       uses: SonarSource/sonarqube-quality-gate-action@v1.1.0
@@ -54,17 +60,17 @@ jobs:
 #     - name: "Show SonarQube Quality Gate Status value"
 #       run: echo "The Quality Gate status is ${{ steps.sonarqube-quality-gate-check.outputs.quality-gate-status }}"
         
-    - name: Publish SonarQube Report
-      uses: actions/upload-artifact@v2
-      with:
-           name: sonarqube-report
-           path: .scannerwork/report-task.txt
+#     - name: Publish SonarQube Report
+#       uses: actions/upload-artifact@v2
+#       with:
+#            name: sonarqube-report
+#            path: .scannerwork/report-task.txt
     
-    - name: Publish Coverage Report
-      uses: actions/upload-artifact@v2
-      with:
-           name: coverage-report
-           path: coverage/lcov-report
+#     - name: Publish Coverage Report
+#       uses: actions/upload-artifact@v2
+#       with:
+#            name: coverage-report
+#            path: coverage/lcov-report
            
            
 
