@@ -24,6 +24,13 @@ jobs:
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+    - name: Sonar for GitHub
+      uses: SonarSource/sonar-github-integration@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        SONAR_LOGIN: ${{ secrets.SONAR_TOKEN }}
         
 #     - name: SonarQube Quality Gate Check
 #       uses: SonarSource/sonarqube-quality-gate-action@v1.1.0
