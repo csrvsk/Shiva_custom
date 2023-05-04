@@ -26,7 +26,7 @@ jobs:
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
     
     - name: Sonar for GitHub
-      uses: SonarSource/sonar-github-integration@master
+      uses: SonarSource/sonar-github-integration@v7
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
