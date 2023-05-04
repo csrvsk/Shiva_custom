@@ -27,12 +27,12 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
     
-    - name: Sonar for GitHub
-      uses: SonarSource/sonar-github-integration@v7
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        SONAR_LOGIN: ${{ secrets.SONAR_TOKEN }}
+#     - name: Sonar for GitHub
+#       uses: SonarSource/sonar-github-integration@v7
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+#         SONAR_LOGIN: ${{ secrets.SONAR_TOKEN }}
                             
     - name: Publish SonarQube report
       uses: SonarSource/sonar-github-integration@v7
