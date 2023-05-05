@@ -27,8 +27,8 @@ jobs:
       with:
         token: ${{ secrets.SONAR_TOKEN }}
         url: ${{ secrets.SONAR_HOST_URL }}
-        entryPoint: 'dotnet'
-        args: 'build MyProject.sln'
+#         entryPoint: 'dotnet'
+#         args: 'build MyProject.sln'
 #       with:
 #         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 #         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
