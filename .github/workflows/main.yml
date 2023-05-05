@@ -20,12 +20,18 @@ jobs:
         # Disabling shallow clone is recommended for improving relevancy of reporting
         fetch-depth: 0
 #     - name: SonarQube Scan
-#       uses: sonarsource/sonarqube-scan-action@v1.2
+# #       uses: sonarsource/sonarqube-scan-action@v1.2
+#     Run monstar-lab-oss/sonarqube-github-action@master
     - name: SonarQube Code Scanner
       uses: monstar-lab-oss/sonarqube-github-action@master
       with:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        token: ${{ secrets.SONAR_TOKEN }}
+        url: ${{ secrets.SONAR_HOST_URL }}
+        entryPoint: 'dotnet'
+        args: 'build MyProject.sln'
+#       with:
+#         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
                             
 #     - name: Publish SonarQube report
 #       uses: SonarSource/sonar-github-integration@v7
