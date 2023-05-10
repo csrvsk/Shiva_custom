@@ -60,7 +60,7 @@ jobs:
 #         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 #         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
-    Check the Quality Gate status.
+#   Check the Quality Gate status.
     - name: SonarQube Quality Gate check
       id: sonarqube-quality-gate-check
       uses: sonarsource/sonarqube-quality-gate-action@master
