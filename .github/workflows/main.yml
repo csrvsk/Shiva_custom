@@ -20,11 +20,11 @@ jobs:
       with:
         # Disabling shallow clone is recommended for improving relevancy of reporting
         fetch-depth: 0
-#     - name: SonarQube Scan
-# #       uses: sonarsource/sonarqube-scan-action@v1.2
+     - name: SonarQube Scan
+       uses: sonarsource/sonarqube-scan-action@v1.2
 #     Run monstar-lab-oss/sonarqube-github-action@master
-    - name: SonarQube Code Scanner
-      uses: monstar-lab-oss/sonarqube-github-action@master
+#     - name: SonarQube Code Scanner
+#       uses: monstar-lab-oss/sonarqube-github-action@master
       with:
         token: ${{ secrets.SONAR_TOKEN }}
         url: ${{ secrets.SONAR_HOST_URL }}
@@ -61,15 +61,15 @@ jobs:
 #         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 #         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
-    # Check the Quality Gate status.
-#     - name: SonarQube Quality Gate check
-#       id: sonarqube-quality-gate-check
-#       uses: sonarsource/sonarqube-quality-gate-action@master
+    Check the Quality Gate status.
+    - name: SonarQube Quality Gate check
+      id: sonarqube-quality-gate-check
+      uses: sonarsource/sonarqube-quality-gate-action@master
       # Force to fail step after specific time.
-#       timeout-minutes: 5
-#       env:
-#        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-#        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      timeout-minutes: 5
+      env:
+       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+       SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
        
 
     # Optionally you can use the output from the Quality Gate in another step.
