@@ -23,10 +23,10 @@ jobs:
       with:
         token: ${{ secrets.SONAR_TOKEN }}
         url: ${{ secrets.SONAR_HOST_URL }}
-    - name: Publish SonarQube report
-      uses: SonarSource/sonar-github-integration@v1.0.0
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+#     - name: Publish SonarQube report
+#       uses: SonarSource/sonar-github-integration@v1.0.0
+#       with:
+#         token: ${{ secrets.GITHUB_TOKEN }}
     - name: SonarQube Quality Gate Report
       uses: phwt/sonarqube-quality-gate-action@v1.3.2
       with:
