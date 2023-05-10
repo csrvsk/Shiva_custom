@@ -21,8 +21,10 @@ jobs:
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
       with:
-        token: ${{ secrets.SONAR_TOKEN }}
-        url: ${{ secrets.SONAR_HOST_URL }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+#         token: ${{ secrets.SONAR_TOKEN }}
+#         url: ${{ secrets.SONAR_HOST_URL }}
 #     - name: Publish SonarQube report
 #       uses: SonarSource/sonar-github-integration@v7.2.1
 #       with:
