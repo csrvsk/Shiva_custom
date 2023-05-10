@@ -35,7 +35,7 @@ jobs:
 #         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
                             
     - name: Publish SonarQube report
-      uses: SonarSource/sonar-github-integration@v7
+      uses: SonarSource/sonar-github-integration@v7.2.1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
     
