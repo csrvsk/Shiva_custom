@@ -44,3 +44,4 @@ public class AvoidANDSymbolCheck extends IssuableSubscriptionVisitor {
         }
     }
 }
+//test commit
